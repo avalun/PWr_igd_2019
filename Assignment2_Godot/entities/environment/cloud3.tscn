@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://entities/environment/cloud.gd" type="Script" id=1]
+[ext_resource path="res://images/cloud3.png" type="Texture" id=2]
+
+[node name="Cloud" type="Area2D"]
+input_pickable = false
+script = ExtResource( 1 )
+
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+build_mode = 1
+polygon = PoolVector2Array( -136.977, -23.3989, -114.39, -57.6217, -69.2155, -60.0173, -40.1261, -53.515, -5.56107, -69.5997, 22.8439, -46.6705, 73.1514, -34.3502, 85.4716, -62.4129, 105.663, -68.5731, 131.33, -52.4883, 128.592, -18.2655, 142.966, 5.34822, 128.592, 40.2555, 91.2895, 52.9179, 61.5157, 70.0293, 33.4529, 62.1581, 0.941269, 64.5537, -25.0681, 54.9713, -37.7305, 63.8692, -64.4243, 69.3449, -100.7, 60.1047, -116.443, 70.0293, -141.426, 47.1001, -136.977, 21.4329, -127.052, 5.69045 )
+disabled = true
+
+[node name="Sprite" type="Sprite" parent="."]
+z_index = 10
+texture = ExtResource( 2 )
