@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flak.png-a32c8c0169832a8682c6c3515a87cc94.stex"
+path="res://.import/flak_explosion.png-4b46787760386009b87c48fe809aeab6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemies/flak.png"
-dest_files=[ "res://.import/flak.png-a32c8c0169832a8682c6c3515a87cc94.stex" ]
+source_file="res://entities/enemies/flak/flak_explosion.png"
+dest_files=[ "res://.import/flak_explosion.png-4b46787760386009b87c48fe809aeab6.stex" ]
 
 [params]
 

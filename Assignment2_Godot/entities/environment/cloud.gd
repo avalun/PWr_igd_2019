@@ -26,6 +26,6 @@ func _on_Cloud_body_exited(body):
 		var pos = body.global_position
 		var vel = body.movement_vector
 		var puff = scene_puff.instance()
+		get_tree().current_scene.add_child(puff)
 		puff.global_position = pos - vel * 4
 		puff.look_at(pos + vel)
-		get_tree().current_scene.add_child(puff)

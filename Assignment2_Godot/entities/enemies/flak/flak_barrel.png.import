@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/flak_barrel.png-38a91bd28248221c60c3d6832d7d3d6c.stex"
+path="res://.import/flak_barrel.png-2d0163a4ed0f16f86799b6b095582f6b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/enemies/flak_barrel.png"
-dest_files=[ "res://.import/flak_barrel.png-38a91bd28248221c60c3d6832d7d3d6c.stex" ]
+source_file="res://entities/enemies/flak/flak_barrel.png"
+dest_files=[ "res://.import/flak_barrel.png-2d0163a4ed0f16f86799b6b095582f6b.stex" ]
 
 [params]
 

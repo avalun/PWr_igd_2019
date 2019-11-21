@@ -13,6 +13,10 @@ var scene_cloud1 = preload("res://entities/environment/cloud1.tscn")
 var scene_cloud2 = preload("res://entities/environment/cloud2.tscn")
 var scene_cloud3 = preload("res://entities/environment/cloud1.tscn")
 
+# Enemies
+var skyrod_timer = 10
+var skyrod_cooldown = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
@@ -28,6 +32,9 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func spawn_enemies():
+	pass
 
 func spawn_clouds():
 	var node
