@@ -20,7 +20,8 @@ tracks/0/keys = {
 }
 
 [node name="explosion" type="Sprite"]
-scale = Vector2( 0.8, 0.8 )
+scale = Vector2( 1.2, 1.2 )
+z_index = 5
 texture = ExtResource( 1 )
 hframes = 9
 frame = 8

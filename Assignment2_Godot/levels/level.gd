@@ -14,18 +14,22 @@ var scene_cloud2 = preload("res://entities/environment/cloud2.tscn")
 var scene_cloud3 = preload("res://entities/environment/cloud1.tscn")
 
 # Enemies
-var skyrod_timer = 10
+var skyrod_scene = preload("res://entities/enemies/skyrod/skyrod.tscn")
+var skyrod_timer = Timer.new()
 var skyrod_cooldown = 1
+var skyrod_speed = 8
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	OS.window_size = Vector2(1080, 800)
 	randomize()
 	
 	cloud_timer.connect("timeout", self, "spawn_clouds") 
-
 	add_child(cloud_timer)
 	
-	OS.window_size = Vector2(1080, 800)
+	skyrod_timer.connect("timeout", self, "spawn_skyrod")
+	add_child(skyrod_timer)
+	skyrod_timer.start(10)
 	
 	spawn_clouds()
 
@@ -33,8 +37,14 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func spawn_enemies():
-	pass
+func spawn_skyrod():
+	var node = skyrod_scene.instance()
+	add_child(node)
+	node.global_position = Vector2(rand_range(300, 660), 100)
+	var target = Globals.player.global_position + Globals.player.movement_vector * 10
+	node.look_at(target)
+	node.movement_vector = (target - node.global_position).normalized() * skyrod_speed
+	skyrod_timer.start(skyrod_cooldown + randf() * 5)
 
 func spawn_clouds():
 	var node

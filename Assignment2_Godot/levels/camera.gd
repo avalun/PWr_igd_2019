@@ -6,6 +6,7 @@ extends Camera2D
 
 onready var player = get_node("../Player")
 var lookahead = 120
+var movement_factor = 5
 var smoothing_factor = 0.2
 
 var is_shaking = false
@@ -18,7 +19,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var goal_pos = player.global_position + player.movement_vector.normalized() * lookahead
+	var goal_pos = player.global_position + (-player.transform.y * lookahead) \
+	+ player.movement_vector * player.movement_vector.length() * movement_factor
+	
 	global_position = lerp(global_position, goal_pos, smoothing_factor)
 	
 	if is_shaking:
