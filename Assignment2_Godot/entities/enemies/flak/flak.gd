@@ -75,7 +75,7 @@ func take_damage():
 func shoot(delta):
 	# Calculate target pos
 	var target_pos = tracked_body.global_position
-	target_pos += tracked_body.movement_vector * leading_factor
+	target_pos += tracked_body.movement_vector * leading_factor * Globals.difficulty_factor
 	
 	var can_shoot = (target_pos - $barrel/spawn.global_position).length() > min_shooting_dist
 	can_shoot = can_shoot and $barrel.rotation_degrees > -max_barrel_rot-90 and $barrel.rotation_degrees < max_barrel_rot-90

@@ -13,4 +13,5 @@ polygon = PoolVector2Array( -108.754, 9.48104, -94.238, -18.3164, -69.5291, -20.
 [node name="Sprite" type="Sprite" parent="."]
 z_index = 10
 texture = ExtResource( 2 )
+[connection signal="area_exited" from="." to="." method="_on_Cloud_area_exited"]
 [connection signal="body_exited" from="." to="." method="_on_Cloud_body_exited"]

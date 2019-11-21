@@ -10,8 +10,8 @@ var scene_puff = preload("res://entities/environment/cloud_puff.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	speed = (randf() / 10.0) + 0.04
-	var scale_factor = 0.75 + randf() / 4.0
+	speed = (randf() / 40.0) + 0.05
+	var scale_factor = 0.6 + randf() / 3.0
 	scale = Vector2(scale_factor, scale_factor)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -22,7 +22,15 @@ func _process(delta):
 
 
 func _on_Cloud_body_exited(body):
-	if body.get_collision_mask_bit(2):
+	handle_collision(body)
+
+
+func _on_Cloud_area_exited(area):
+	handle_collision(area)
+
+
+func handle_collision(body):
+	if body.get_collision_mask_bit(2) or body.get_collision_mask_bit(15):
 		var pos = body.global_position
 		var vel = body.movement_vector
 		var puff = scene_puff.instance()

@@ -1,9 +1,5 @@
 extends Camera2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
 onready var player = get_node("../Player")
 var lookahead = 120
 var movement_factor = 5

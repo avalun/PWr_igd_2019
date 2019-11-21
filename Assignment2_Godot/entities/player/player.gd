@@ -1,8 +1,5 @@
 extends KinematicBody2D
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var max_rotation_speed = 0.16
 var max_speed = 5
 var gravity = 3
@@ -24,7 +21,7 @@ var is_right_cannon = true
 
 var shot = preload("res://entities/player/Shot.tscn")
 var shot_speed = 6
-var shot_cooldown = 1
+var shot_cooldown = 0.5
 var shot_timer = 0
 
 var smoke = preload("res://entities/player/smoke.tscn")
@@ -92,6 +89,7 @@ func shoot():
 			node.look_at(spawn.global_position)
 			node.movement_vector = node.transform.x * shot_speed + movement_vector * 0.1
 		shot_timer = shot_cooldown
+		Globals.current_camera.shake(0.2, 2)
 
 func take_damage():
 	health -= 1
