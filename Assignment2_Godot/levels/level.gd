@@ -4,13 +4,13 @@ extends Node2D
 # var a = 2
 # var b = "text"
 var cloud_timer = Timer.new()
-var clouds_min_time = 5
+var clouds_min_time = 13
 var clouds_wait_factor = 7
 var clouds_min_y = 50
 var clouds_max_y = 400
 
 var scene_cloud1 = preload("res://entities/environment/cloud1.tscn")
-var scene_cloud2 = preload("res://entities/environment/cloud1.tscn")
+var scene_cloud2 = preload("res://entities/environment/cloud2.tscn")
 var scene_cloud3 = preload("res://entities/environment/cloud1.tscn")
 
 # Called when the node enters the scene tree for the first time.

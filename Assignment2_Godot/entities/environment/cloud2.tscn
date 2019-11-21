@@ -8,10 +8,9 @@ input_pickable = false
 script = ExtResource( 1 )
 
 [node name="Collision" type="CollisionPolygon2D" parent="."]
-build_mode = 1
 polygon = PoolVector2Array( -108.754, 9.48104, -94.238, -18.3164, -69.5291, -20.7873, -48.5266, -46.1139, -28.1417, -30.0531, -13.3164, -36.5392, 15.0988, -40.5544, 40.1165, -18.3164, 68.8406, -19.5519, 85.8279, -34.0683, 103.742, -29.1266, 111.155, -10.9038, 93.2406, 4.53927, 78.7241, 7.62788, 62.0456, 29.2481, 41.6608, 15.6583, -0.961975, 44.6912, -25.0531, 30.7924, -42.9671, 34.4988, -76.9417, 19.0557, -98.2531, 23.9975, -98.2531, 23.9975 )
-disabled = true
 
 [node name="Sprite" type="Sprite" parent="."]
 z_index = 10
 texture = ExtResource( 2 )
+[connection signal="body_exited" from="." to="." method="_on_Cloud_body_exited"]

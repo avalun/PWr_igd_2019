@@ -1,10 +1,14 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://levels/level.gd" type="Script" id=1]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://images/background.png" type="Texture" id=3]
 [ext_resource path="res://entities/environment/cloud1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/environment/cloud2.tscn" type="PackedScene" id=5]
+[ext_resource path="res://entities/environment/house.tscn" type="PackedScene" id=6]
+[ext_resource path="res://entities/enemies/flak.tscn" type="PackedScene" id=7]
+[ext_resource path="res://entities/environment/ground.tscn" type="PackedScene" id=8]
+[ext_resource path="res://entities/environment/cloud_puff.tscn" type="PackedScene" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -74,3 +78,60 @@ position = Vector2( 604.964, 231.633 )
 
 [node name="Cloud" parent="." instance=ExtResource( 5 )]
 position = Vector2( 303.535, 296.765 )
+
+[node name="house" parent="." instance=ExtResource( 6 )]
+position = Vector2( 25, 807 )
+
+[node name="house2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 150, 807 )
+
+[node name="house3" parent="." instance=ExtResource( 6 )]
+position = Vector2( 210, 807 )
+
+[node name="house4" parent="." instance=ExtResource( 6 )]
+position = Vector2( 620, 807 )
+
+[node name="house5" parent="." instance=ExtResource( 6 )]
+position = Vector2( 550, 807 )
+
+[node name="house6" parent="." instance=ExtResource( 6 )]
+position = Vector2( 700, 807 )
+
+[node name="house7" parent="." instance=ExtResource( 6 )]
+position = Vector2( 880, 807 )
+
+[node name="flak" parent="." instance=ExtResource( 7 )]
+position = Vector2( 65, 811 )
+
+[node name="flak2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 104, 811 )
+
+[node name="flak3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 271, 811 )
+
+[node name="flak4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 382, 811 )
+
+[node name="flak5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 481, 811 )
+
+[node name="flak6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 661, 811 )
+
+[node name="flak7" parent="." instance=ExtResource( 7 )]
+position = Vector2( 782, 811 )
+
+[node name="flak8" parent="." instance=ExtResource( 7 )]
+position = Vector2( 832, 811 )
+
+[node name="Ground" parent="." instance=ExtResource( 8 )]
+position = Vector2( 479, 890 )
+
+[node name="cloud_puff" parent="." instance=ExtResource( 9 )]
+position = Vector2( 485, 384 )
+
+[node name="cloud_puff2" parent="." instance=ExtResource( 9 )]
+position = Vector2( 211, 114 )
+
+[node name="cloud_puff3" parent="." instance=ExtResource( 9 )]
+position = Vector2( 87, 81 )

@@ -5,6 +5,7 @@ extends Area2D
 # var b = "text"
 var speed = 0
 
+var scene_puff = preload("res://entities/environment/cloud_puff.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,3 +19,13 @@ func _process(delta):
 	if global_position.x < -300:
 		queue_free()
 	global_position.x -= speed
+
+
+func _on_Cloud_body_exited(body):
+	if body.get_collision_mask_bit(2):
+		var pos = body.global_position
+		var vel = body.movement_vector
+		var puff = scene_puff.instance()
+		puff.global_position = pos - vel * 4
+		puff.look_at(pos + vel)
+		get_tree().current_scene.add_child(puff)

@@ -43,9 +43,6 @@ func _physics_process(delta):
 		$Sprite2.visible = false
 		$Sprite3.visible = false
 	
-	if Input.is_action_pressed("shoot"):
-		shoot()
-
 	# Apply Gravity
 	movement_vector += Vector2(0, gravity * delta)
 
@@ -54,6 +51,9 @@ func _physics_process(delta):
 
 	movement_vector = movement_vector.clamped(max_speed)
 	move_and_collide(movement_vector)
+	
+	if Input.is_action_pressed("shoot"):
+		shoot()
 
 func cap_and_slow_rotation():
 	rotation_speed = clamp(rotation_speed, -max_rotation_speed, max_rotation_speed)
@@ -68,7 +68,7 @@ func shoot():
 		if is_right_cannon:
 			node.global_position = $bulletspawn_right.global_position
 		else:
-			node.global_position = $bullerspawn_left.global_position
+			node.global_position = $bulletspawn_left.global_position
 		is_right_cannon = not is_right_cannon
 		node.movement_vector = -transform.y * shot_speed
 		shot_timer = shot_cooldown
