@@ -17,6 +17,7 @@ func _process(delta):
 	global_position += movement_vector
 	explosion_timer -= delta
 	if explosion_timer < 0 and not is_queued_for_destr:
+		$AudioStreamPlayer.play(0)
 		movement_vector = Vector2(0, 0)
 		$AnimationPlayer.play("explosion")
 		is_queued_for_destr = true

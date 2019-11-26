@@ -88,6 +88,8 @@ func shoot(delta):
 		node.look_at(target_pos)
 		node.movement_vector = node.transform.x * shot_speed
 		node.set_timer((target_pos - $barrel/spawn.global_position).length() / (shot_speed / delta))
+		
+		$AudioStreamPlayer2D.play(0)
 
 
 

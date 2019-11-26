@@ -19,8 +19,6 @@ var skyrod_timer = Timer.new()
 var skyrod_cooldown = 2
 var skyrod_speed = 8
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	OS.window_size = Vector2(1080, 800)
@@ -33,11 +31,16 @@ func _ready():
 	add_child(skyrod_timer)
 	skyrod_timer.start(10)
 	
+	$Camera2D/AudioStreamPlayer.play(0)
+	
 	spawn_clouds()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if Globals.is_over:
+		$Camera2D/Label2.text = format_time(Globals.gametime)
+	else:
+		Globals.gametime += delta
 
 func spawn_skyrod():
 	var node = skyrod_scene.instance()
@@ -62,3 +65,11 @@ func spawn_clouds():
 	var pos = Vector2(1100, (clouds_min_y + randi() % clouds_max_y))
 	node.global_position = pos
 	cloud_timer.start((randf() * clouds_wait_factor) + clouds_min_time)
+	
+
+func format_time(time):
+	var milliseconds = int(time * 1000) % 1000
+	var seconds = (int(time) % 60) as int
+	var minutes = (int(time) / 60) as int
+	
+	return String(minutes) + ":" + String(seconds) + ":" + String(milliseconds)

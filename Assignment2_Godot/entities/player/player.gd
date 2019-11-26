@@ -41,26 +41,32 @@ func _ready():
 
 func _physics_process(delta):
 	has_rotated = false
-	if Input.is_action_pressed("rotate_left"):
-		rotation_speed -= rotation_force * delta
-		has_rotated = true
-
-	if Input.is_action_pressed("rotate_right"):
-		rotation_speed += rotation_force * delta
-		has_rotated = true
-
-	if Input.is_action_pressed("accelerate") and not is_engine_disabled:
-		movement_vector += -transform.y * acceleration_force * delta
+	if not Globals.is_over:
+		if Input.is_action_pressed("rotate_left"):
+			rotation_speed -= rotation_force * delta
+			has_rotated = true
 	
-	if Input.is_action_just_pressed("accelerate") and not is_engine_disabled:
-		$AnimationPlayer.play("start")
-		$AnimationPlayer.queue("firing")
+		if Input.is_action_pressed("rotate_right"):
+			rotation_speed += rotation_force * delta
+			has_rotated = true
+	
+		if Input.is_action_pressed("accelerate") and not is_engine_disabled:
+			movement_vector += -transform.y * acceleration_force * delta
 		
-	if Input.is_action_just_released("accelerate"):
-		$AnimationPlayer.stop(1)
-		$Sprite2.visible = false
-		$Sprite3.visible = false
-	
+		if Input.is_action_just_pressed("accelerate") and not is_engine_disabled:
+			$AnimationPlayer.play("start")
+			$AnimationPlayer.queue("firing")
+			$AudioStreamPlayer.play(0)
+			
+		if Input.is_action_just_released("accelerate"):
+			$AnimationPlayer.stop(1)
+			$Sprite2.visible = false
+			$AudioStreamPlayer.stop()
+			$Sprite3.visible = false
+			
+		if Input.is_action_pressed("shoot"):
+			shoot()
+		
 	# Apply Gravity
 	movement_vector += Vector2(0, gravity * delta)
 
@@ -70,9 +76,7 @@ func _physics_process(delta):
 	respect_bounds()
 	movement_vector = movement_vector.clamped(max_speed)
 	move_and_collide(movement_vector)
-	
-	if Input.is_action_pressed("shoot"):
-		shoot()
+
 
 func cap_and_slow_rotation():
 	rotation_speed = clamp(rotation_speed, -max_rotation_speed, max_rotation_speed)
@@ -90,11 +94,12 @@ func shoot():
 			node.movement_vector = node.transform.x * shot_speed + movement_vector * 0.1
 		shot_timer = shot_cooldown
 		Globals.current_camera.shake(0.2, 2)
+		$shoot_player.play(0)
 
 func take_damage():
 	health -= 1
 	if health < 1:
-		health = 1
+		Globals.stop_game()
 	heal_timer = heal_cooldown
 	
 
@@ -118,6 +123,7 @@ func disable_engine(time):
 	$AnimationPlayer.stop(1)
 	$Sprite2.visible = false
 	$Sprite3.visible = false
+	$AudioStreamPlayer.stop()
 
 func spawn_smoke():
 	var node = smoke.instance()
@@ -157,6 +163,7 @@ func _process(delta):
 			if Input.is_action_pressed("accelerate"):
 				$AnimationPlayer.play("start")
 				$AnimationPlayer.queue("firing")
+				$AudioStreamPlayer.play(0)
 			is_engine_disabled = false
 	
 	# Control rotation animation

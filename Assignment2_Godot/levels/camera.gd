@@ -32,3 +32,8 @@ func shake(duration, strength):
 	shake_strength = strength
 	shaking_timer = duration
 	is_shaking = true
+
+func stop_game():
+	yield(get_tree().create_timer(1.0), "timeout")
+	$Label.visible = true
+	$Label2.visible = true
