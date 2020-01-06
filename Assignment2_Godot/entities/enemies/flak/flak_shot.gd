@@ -11,7 +11,8 @@ var is_queued_for_destr = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("shot")
-	
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	global_position += movement_vector
